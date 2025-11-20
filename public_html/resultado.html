@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+<html>
+<head><meta charset="utf-8"><title>Resultados</title></head>
+<body>
+  <h1>Resultados</h1>
+  <div id="list"></div>
+
+  <script>
+    const data = JSON.parse(sessionStorage.getItem('searchResults') || '[]');
+    const c = document.getElementById('list');
+    if (!data.length) c.textContent = 'Sin resultados.';
+    data.forEach(h => {
+      const card = document.createElement('div');
+      card.style.margin = '8px 0';
+      card.textContent = `${h.direccion} • ${h.precio} €/mes • Propietario: ${h.email}`;
+      c.appendChild(card);
+    });
+  </script>
+</body>
+</html>

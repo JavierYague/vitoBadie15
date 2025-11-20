@@ -1,0 +1,181 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 17 nov. 2025, 19:02:18
+    Author     : Javier
+/*
+  RoomMatch – styles
+  Autor: tú :)
+*/
+
+/* ======= Reset básico ======= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ======= Tokens ======= */
+:root{
+  --rm-teal: #0E5B60;
+  --rm-teal-dark: #0A3E42;
+  --rm-coral: #FF7A59;
+  --rm-text: #333;
+  --rm-white: #fff;
+  --rm-panel-shadow: 0 4px 12px rgba(0,0,0,.12);
+}
+
+/* ======= Base ======= */
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--rm-text);
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center;
+
+  /* Fondo (ajusta la ruta si cambias carpetas) */
+  background: #F5EDE3 url("../images/fondoCalido.png") center/cover no-repeat fixed;
+}
+
+/* ======= Header ======= */
+.header{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* izq | centro | dcha */
+  align-items: center;
+  gap: 12px;
+  background: rgba(10,62,66,.9);
+  color: #fff;
+  padding: 10px 16px;
+  box-shadow: 0 4px 8px rgba(0,0,0,.2);
+}
+.logo{
+  width: 150px; height: 80px;
+  justify-self: start; display: block;
+}
+.header-title{
+  font-size: 1.8rem; font-weight: 700; letter-spacing: .2px; margin:0;
+  justify-self: center;
+}
+.btn-login{
+  justify-self:end;
+  padding:10px 18px; border:0; border-radius:6px;
+  background:#FF7A59; color:#fff; font-weight:700;
+  text-decoration:none; cursor:pointer;
+  transition:background-color .25s;
+}
+.btn-login:hover{ background:#e8684f; }
+
+/* ======= Main ======= */
+.main-content{
+  flex: 1; width: 100%;
+  display:flex; justify-content:center; align-items:center;
+  padding:24px;
+}
+
+/* Tarjeta buscador */
+.search-container{
+  width: 520px; max-width: 92%;
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(2px);
+  padding: 22px; border-radius: 10px;
+  box-shadow: var(--rm-panel-shadow);
+  text-align: center;
+}
+.search-container h2{
+  font-size: 1.6rem; color: var(--rm-teal-dark);
+  margin-bottom: 14px;
+}
+
+/* Grupos de campos */
+.form-group{ margin-bottom: 14px; text-align: left; }
+
+/* Inputs / Selects */
+.input-field,
+.select-field{
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid #cfcfcf;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #fff;
+  outline: none;
+}
+.input-field:focus,
+.select-field:focus{
+  border-color: var(--rm-teal);
+  box-shadow: 0 0 0 3px rgba(14,91,96,.12);
+}
+
+/* ===== Rango de precio (doble slider) ===== */
+.price-range { margin-top: 8px; }
+.range-header{
+  display:flex; justify-content:space-between;
+  font-size:.95rem; margin-bottom:8px; color:#666;
+}
+
+.range-slider{
+  position:relative; height:36px; /* deja espacio para pulgares */
+}
+.range-track{
+  position:absolute; left:0; right:0; top:50%; height:6px; transform:translateY(-50%);
+  background:#e5e5e5; border-radius:999px; z-index:0; pointer-events:none;
+}
+.range-fill{
+  position:absolute; top:50%; height:6px; transform:translateY(-50%);
+  background: var(--rm-teal); border-radius:999px; z-index:1; pointer-events:none;
+}
+
+/* dos sliders superpuestos */
+.range-slider input[type="range"]{
+  position:absolute; left:0; right:0; width:100%; height:36px;
+  -webkit-appearance:none; background:transparent; pointer-events:auto; margin:0; z-index:2;
+}
+/* pulgar */
+.range-slider input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none; width:18px; height:18px; border-radius:50%;
+  background:#fff; border:2px solid var(--rm-teal); cursor:pointer;
+  box-shadow:0 0 0 3px rgba(14,91,96,.12);
+}
+.range-slider input[type="range"]::-moz-range-thumb{
+  width:18px; height:18px; border-radius:50%;
+  background:#fff; border:2px solid var(--rm-teal); cursor:pointer;
+  box-shadow:0 0 0 3px rgba(14,91,96,.12);
+}
+/* pista nativa transparente */
+.range-slider input[type="range"]::-webkit-slider-runnable-track{ height:6px; background:transparent; }
+.range-slider input[type="range"]::-moz-range-track{ height:6px; background:transparent; }
+
+/* Botón buscar */
+.btn-search{
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--rm-teal);
+  color: var(--rm-white);
+  border: 0; border-radius: 6px;
+  font-weight: 700; font-size: 1rem;
+  cursor: pointer; margin-top: 10px;
+  transition: background-color .25s ease;
+}
+.btn-search:hover{ background: var(--rm-teal-dark); }
+
+/* ======= Footer ======= */
+.footer{
+  width:100%;
+  background: rgba(10,62,66,.9);
+  color:#fff; text-align:center;
+  padding:14px;
+  box-shadow:0 -4px 8px rgba(0,0,0,.12);
+}
+
+/* ======= Responsive ======= */
+@media (max-width:680px){
+  .logo{ height:48px; }
+  .header-title{ font-size:1.4rem; }
+  .search-container{ padding:16px; width: 94%; }
+  /* Dos campos en línea (grande) */
+@media (min-width: 700px){
+  .form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}
+}

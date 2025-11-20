@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar sesión — RoomMatch</title>
+  <link rel="stylesheet" href="css/login.css" />
+  <style>
+    body{
+      background:#F5EDE3 url("images/fondoCalido.png") center/cover no-repeat fixed;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <img src="images/roomMatchlogo.png" alt="RoomMatch" class="logo" />
+    <h1 class="header-title">RoomMatch</h1>
+    <a href="index.html" class="btn-back">Volver</a>
+  </header>
+
+  <main class="login-container">
+    <section class="login-box" aria-labelledby="titulo-login">
+      <h2 id="titulo-login">Iniciar sesión</h2>
+
+      <!-- NO pongas action para evitar navegaciones si el JS falla -->
+      <form id="login-form" method="post" novalidate>
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email"
+                 class="input-field" placeholder="tucorreo@dominio.com"
+                 autocomplete="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="password"
+                 class="input-field" placeholder="••••••••"
+                 autocomplete="current-password" required />
+        </div>
+
+        <button type="button" onclick="loginUser()" class="btn-login">Iniciar Sesión</button>
+
+        <p class="register-link">
+          ¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a>
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© RoomMatch</p>
+  </footer>
+
+  <!-- IMPORTANTE: primero db.js, luego login.js. Al final del body -->
+  <script src="js/db.js"></script>
+  
+  <script src="js/login.js"></script>
+</body>
+</html>
