@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>RoomMatch — Resultados</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- base (header/footer) -->
+  <link rel="stylesheet" href="css/logueado.css" />
+  <!-- estilos específicos de resultados -->
+  <link rel="stylesheet" href="css/resultados.css" />
+</head>
+<body>
+  <header class="header">
+    <img src="images/roomMatchlogo.png" alt="RoomMatch" class="logo" />
+    <h1 class="header-title">Resultados</h1>
+    <a href="login.html" class="btn-logout">Login</a>
+  </header>
+
+  <main class="results-wrap">
+    <div class="results-header">
+      <h2 id="filters-label">Resultados</h2>
+      <a href="index.html" class="btn btn-ghost">Modificar filtros</a>
+    </div>
+
+    <div id="results" class="results-grid" aria-live="polite"></div>
+  </main>
+
+  <footer class="footer">
+    <p>© RoomMatch</p>
+  </footer>
+
+  <!-- IMPORTANTE: db primero -->
+  <script src="js/db.js"></script>
+  <script src="js/resultadoSinLogin.js"></script>
+</body>
+</html>
+
+

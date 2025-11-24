@@ -49,10 +49,13 @@ async function _loginUser(ev) {
     }
 
     // Sesión + redirección
-    sessionStorage.setItem('loggedInUser', JSON.stringify({
-      email: user.email,
-      nombre: user.nombre
-    }));
+    if(user.password===password){ 
+        alert(`¡Bienvenido, ${user.nombre}!`);
+
+        sessionStorage.setItem('loggedInUser', JSON.stringify({
+          email: user.email,
+          nombre: user.nombre
+        }));}
     window.location.href = 'logeado.html'; // o donde corresponda
   } catch (e) {
     console.error(e);
