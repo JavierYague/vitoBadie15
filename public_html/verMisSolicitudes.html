@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+<html lang="es">
+    
+<head>
+  <meta charset="UTF-8" />
+  <title>RoomMatch — Mis solicitudes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Estilos base y específicos de la vista -->
+  <link rel="stylesheet" href="css/logueado.css" />
+  <link rel="stylesheet" href="css/verMisSolicitudes.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <img src="images/roomMatchlogo.png" alt="RoomMatch" class="logo" />
+    <h1 class="header-title">Solicitudes y mis pisos</h1>
+    <a class="btn-logout" href="logueado.html">Volver</a>
+  </header>
+
+  <main class="rs-wrap">
+    <!-- Mis pisos -->
+    <section class="rs-card" aria-labelledby="mis-pisos-title">
+      <h2 id="mis-pisos-title" class="rs-title">Mis pisos</h2>
+      <p class="rs-subtitle">Listado de habitaciones/publicaciones de las que eres propietario.</p>
+
+      <div id="my-rooms" class="rs-grid" aria-live="polite">
+        <!-- Se llena desde JS con .rs-room -->
+        <!-- Estado vacío -->
+        <div class="empty" id="my-rooms-empty" hidden>
+          Aún no tienes pisos publicados.
+        </div>
+      </div>
+    </section>
+
+    <!-- Solicitudes recibidas -->
+    <section class="rs-card" aria-labelledby="solicitudes-title">
+      <h2 id="solicitudes-title" class="rs-title">Solicitudes recibidas</h2>
+      <p class="rs-subtitle">
+        Acepta una solicitud para crear un alquiler. Puedes rechazarla si no procede.
+      </p>
+
+      <div class="table-wrap">
+        <table class="rs-table" aria-describedby="solicitudes-title">
+          <thead>
+            <tr>
+              <th>ID hab.</th>
+              <th>Ciudad</th>
+              <th>Precio</th>
+              <th>Solicitante</th>
+              <th>Estado</th>
+              <th class="rs-actions-col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="solicitudes-body" aria-live="polite">
+            <!-- Filas generadas por JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Estado vacío -->
+      <div class="empty" id="solicitudes-empty" hidden>
+        No tienes solicitudes pendientes.
+      </div>
+
+      <div class="rs-footer-actions">
+        <button type="button" class="btn btn-ghost" onclick="location.reload()">Actualizar</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© RoomMatch</p>
+  </footer>
+
+  <!-- Scripts -->
+    <script src="js/db.js"></script>
+    <script src="js/verMisSolicitudes.js" defer></script>
+</body>
+</html>

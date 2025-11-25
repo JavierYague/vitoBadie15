@@ -4,39 +4,31 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
 -->
 
-
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>RoomMatch — Resultados</title>
+  <title>RoomMatch — Mis solicitudes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Base común (header/footer, tipografías…) -->
   <link rel="stylesheet" href="css/logueado.css" />
-  <!-- Estilos específicos de resultados -->
   <link rel="stylesheet" href="css/resultados.css" />
 </head>
 <body>
   <header class="header">
     <img src="images/roomMatchlogo.png" alt="RoomMatch" class="logo" />
-    <h1 class="header-title">Resultados</h1>
+    <h1 class="header-title">Mis solicitudes</h1>
     <a href="logueado.html" class="btn-logout">Volver</a>
   </header>
 
   <main class="results-wrap">
     <div class="results-header">
-      <h2 id="filters-label">Resultados</h2>
-      <a href="logueado.html" class="btn btn-ghost">Modificar filtros</a>
+      <h2>Solicitudes enviadas</h2>
     </div>
-
-    <div id="results" class="results-grid" aria-live="polite"></div>
+    <div id="my-requests" class="results-grid" aria-live="polite"></div>
   </main>
 
-  <footer class="footer">
-    <p>© RoomMatch</p>
-  </footer>
+  <footer class="footer"><p>© RoomMatch</p></footer>
 
-  <!-- IMPORTANTE: db primero -->
   <script src="js/db.js"></script>
-  <script src="js/resultados.js"></script>
+  <script src="js/misSolicitudes.js"></script>
 </body>
 </html>

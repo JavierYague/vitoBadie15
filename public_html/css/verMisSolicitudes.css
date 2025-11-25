@@ -1,0 +1,222 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 24 nov. 2025, 21:58:11
+    Author     : usuario
+*/
+/* ====== Ver Solicitudes (propietario) ====== */
+:root{
+  --rm-bg: #f6f4ef;
+  --rm-card: #ffffff;
+  --rm-ink: #0a3e42;
+  --rm-ink-soft: #4a5b5c;
+  --rm-accent: #0f766e;   /* verde azulado */
+  --rm-accent-2: #0ea5a3; /* hover */
+  --rm-danger: #c2410c;   /* naranja/rojo suave */
+  --rm-danger-2: #dc5a24;
+  --rm-ok: #15803d;       /* verde ok */
+  --rm-ok-2: #16a34a;
+  --rm-muted: #e9eef0;
+  --rm-shadow: 0 8px 24px rgba(0,0,0,.12);
+  --rm-radius: 14px;
+}
+
+body {
+  body {
+  /* imagen + degradado suave encima */
+  background:
+    linear-gradient(180deg, rgba(255,220,170,0.35) 0%, rgba(255,240,210,0.35) 100%),
+    url("images/fondoCalido.png"); /* cámbialo si quieres otro */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+}
+
+/* Wrapper general de la vista */
+.rs-wrap{
+  max-width: 1100px;
+  margin: 24px auto 56px;
+  padding: 0 16px;
+}
+
+/* Encabezados de sección */
+.rs-title{
+  margin: 10px 0 6px;
+  color: var(--rm-ink);
+  letter-spacing: .2px;
+}
+.rs-subtitle{
+  margin: 0 0 14px;
+  color: var(--rm-ink-soft);
+  font-size: .95rem;
+}
+
+/* Tarjetas contenedoras */
+.rs-card{
+  background: var(--rm-card);
+  border-radius: var(--rm-radius);
+  box-shadow: var(--rm-shadow);
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+/* --- Tabla genérica (solicitudes) --- */
+.rs-table{
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: .95rem;
+}
+.rs-table th,
+.rs-table td{
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--rm-muted);
+  text-align: left;
+  vertical-align: middle;
+}
+.rs-table thead th{
+  font-weight: 600;
+  color: var(--rm-ink);
+  background: #f7faf9;
+}
+.rs-table tbody tr:hover{
+  background: #f9fbfb;
+}
+
+/* Columna de acciones */
+.rs-actions{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Botones */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: var(--rm-accent);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .05s ease, background .2s ease, box-shadow .2s ease;
+  user-select: none;
+}
+.btn:hover{ background: var(--rm-accent-2); }
+.btn:active{ transform: translateY(1px); }
+
+.btn-ghost{
+  background: transparent;
+  color: var(--rm-accent);
+  border-color: var(--rm-accent);
+}
+.btn-ghost:hover{
+  background: rgba(15,118,110,.08);
+}
+
+.btn-accept{
+  background: var(--rm-ok);
+}
+.btn-accept:hover{
+  background: var(--rm-ok-2);
+}
+
+.btn-reject{
+  background: var(--rm-danger);
+}
+.btn-reject:hover{
+  background: var(--rm-danger-2);
+}
+
+/* Badges de estado */
+.badge{
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .2px;
+}
+.status-pending{
+  color: #92400e;
+  background: #fef3c7;
+}
+.status-accepted{
+  color: #065f46;
+  background: #d1fae5;
+}
+.status-rejected{
+  color: #7f1d1d;
+  background: #fee2e2;
+}
+
+/* Lista de mis pisos (grid) */
+.rs-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+.rs-room{
+  display: flex;
+  flex-direction: column;
+  background: var(--rm-card);
+  border-radius: var(--rm-radius);
+  box-shadow: var(--rm-shadow);
+  overflow: hidden;
+}
+.rs-room img{
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  background: #eef2f3;
+}
+.rs-room-body{
+  padding: 12px;
+}
+.rs-room-title{
+  margin: 0 0 6px;
+  color: var(--rm-ink);
+  font-weight: 700;
+}
+.rs-room-meta{
+  margin: 0;
+  color: var(--rm-ink-soft);
+  font-size: .92rem;
+}
+
+/* Estado vacío */
+.empty{
+  padding: 18px;
+  border: 1px dashed var(--rm-muted);
+  border-radius: var(--rm-radius);
+  color: var(--rm-ink-soft);
+  background: #fbfbfb;
+}
+
+/* Paginación/acciones inferior (opcional) */
+.rs-footer-actions{
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Responsivo: tabla scrolleable en móviles */
+@media (max-width: 720px){
+  .rs-card{ padding: 12px; }
+  .rs-table{
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .rs-actions{ gap: 6px; }
+  .btn{ padding: 7px 10px; font-size: .92rem; }
+}
+

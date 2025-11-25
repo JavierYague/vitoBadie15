@@ -1,0 +1,72 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 24 nov. 2025, 20:14:46
+    Author     : usuario
+*/
+.reg-wrap {
+  max-width: 720px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+.reg-title {
+  text-align: center;
+  margin-bottom: 12px;
+  color: #0A3E42;
+}
+.reg-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr;
+}
+.reg-grid .form-group:nth-child(5),
+.reg-grid .form-group.terms {
+  grid-column: 1 / -1;
+}
+
+.avatar-preview {
+  margin-top: 8px;
+  display: inline-block;
+  background: #f3f3f3;
+  border-radius: 12px;
+  padding: 6px;
+}
+.avatar-preview img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: none; /* hasta que haya imagen */
+}
+
+.btn-primary {
+  display: inline-block;
+  margin-top: 12px;
+  background: #0A3E42;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+.btn-primary:hover { opacity: .92; }
+
+.muted {
+  color: #666;
+  margin-top: 8px;
+}
+
+.reg-msg {
+  margin-top: 10px;
+  min-height: 1.2em;
+}
+.reg-msg.ok { color: #1b7a3a; }
+.reg-msg.err { color: #a33636; }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .reg-grid { grid-template-columns: 1fr; }
+}
+

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>RoomMatch — Subir piso</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Reutilizamos estilos base -->
+  <link rel="stylesheet" href="css/logueado.css" />
+  <style>
+    .form-wrap { max-width: 720px; margin: 24px auto; padding: 0 16px; }
+    .card { background:#fff; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.12); padding:16px; }
+    .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+    .grid-2 .form-group { margin-bottom: 0; }
+    .hint { color:#666; font-size:.9rem; margin-top:4px; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <img src="images/roomMatchlogo.png" alt="RoomMatch" class="logo" />
+    <h1 class="header-title">Subir piso</h1>
+    <a href="logueado.html" class="btn-logout">Volver</a>
+  </header>
+
+  <main class="form-wrap">
+    <section class="card">
+      <form id="form-subir-piso" autocomplete="on">
+        <div class="form-group">
+          <label for="direccion">Ciudad</label>
+          <select id="direccion" name="direccion" class="input-field" required>
+            <option value="" disabled selected>Selecciona ciudad</option>
+            <option value="Vitoria">Vitoria</option>
+            <option value="Bilbao">Bilbao</option>
+            <option value="Donosti">Donosti</option>
+          </select>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label for="precio">Precio (€/mes)</label>
+            <input id="precio" name="precio" type="number" min="0" step="50"
+                   class="input-field" placeholder="Ej: 450" required />
+          </div>
+
+          <div class="form-group">
+            <label for="disponible-desde">Disponible desde</label>
+            <input id="disponible-desde" name="disponible_desde" type="date"
+                   class="input-field" required />
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label for="lat">Latitud (opcional)</label>
+            <input id="lat" name="lat" type="number" step="any" class="input-field" />
+          </div>
+          <div class="form-group">
+            <label for="longi">Longitud (opcional)</label>
+            <input id="longi" name="longi" type="number" step="any" class="input-field" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="imagen-file">Imagen (archivo) — opcional</label>
+          <input id="imagen-file" name="imagen_file" type="file" accept="image/*" class="input-field" />
+          <div class="hint">Si no subes imagen, se usará un placeholder.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="descripcion">Descripción (opcional)</label>
+          <textarea id="descripcion" name="descripcion" rows="3" class="input-field"
+                    placeholder="Breve descripción del piso"></textarea>
+        </div>
+
+        <button type="submit" class="btn-search">Guardar piso</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© RoomMatch</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/db.js"></script>
+  <script src="js/subirPiso.js"></script>
+</body>
+</html>
+

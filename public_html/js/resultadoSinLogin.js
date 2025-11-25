@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   render(rooms, filters);
 });
 */
-function showError(msg){
+/*function showError(msg){
   console.error(msg);
   const box = document.getElementById('error-box');
   if (box) box.textContent = String(msg);
@@ -202,6 +202,82 @@ document.addEventListener('DOMContentLoaded', async () => {
   } catch (err) {
     showError(err);
   }
+});
+*/
+async function ensureDB(){ if(!window.db) window.db = await openDB(); return window.db; }
+
+function readFilters(){
+  try { return JSON.parse(sessionStorage.getItem('searchFiltersPublic') || 'null'); }
+  catch { return null; }
+}
+
+async function fetchRooms({ ciudad, min, max, fecha }){
+  const db = await ensureDB();
+  const store = db.transaction(['habitaciones'], 'readonly').objectStore('habitaciones');
+
+  // Por precio (igual que antes)
+  const idxPrice = store.index('precio');
+  const range = IDBKeyRange.bound(min, max);
+
+  return await new Promise((resolve, reject) => {
+    const out = [];
+    idxPrice.openCursor(range).onsuccess = e => {
+      const c = e.target.result;
+      if (c) {
+        const r = c.value;
+        const cityOK = !ciudad || r.direccion === ciudad;
+        const fechaOK = !fecha || (r.disponibleDesde && r.disponibleDesde <= fecha);
+        if (cityOK && fechaOK) out.push(r);
+        c.continue();
+      } else {
+        // Orden precio ascendente por si acaso
+        out.sort((a,b)=> (a.precio||0)-(b.precio||0));
+        resolve(out);
+      }
+    };
+  });
+}
+
+function render(rooms, filters){
+  const box = document.getElementById('results');
+  const label = document.getElementById('filters-label');
+
+  if (label){
+    const city = filters.ciudad || 'Cualquier ciudad';
+    label.textContent = `Resultados — ${city} · ${filters.min}–${filters.max} €/mes · desde ${filters.fecha}`;
+  }
+
+  if (!rooms.length){
+    box.innerHTML = `<div class="room-card" style="grid-column:1/-1">
+      <div class="room-body"><h3 class="room-title">Sin resultados</h3>
+      <p class="room-meta">Prueba con otra ciudad o fecha.</p></div></div>`;
+    return;
+  }
+
+  box.innerHTML = rooms.map(r => {
+    const img = r.imagen || 'images/hab/placeholder.jpg';
+    const title = `${r.direccion || '—'} · ${r.precio} €/mes`;
+    // Imagen difuminada en público:
+    return `
+      <article class="room-card">
+        <img class="room-img blurred" src="${img}" alt="Habitación en ${r.direccion || ''}">
+        <div class="room-body">
+          <h3 class="room-title">${title}</h3>
+          <p class="room-meta">Disponible desde: ${r.disponibleDesde || '—'}</p>
+        </div>
+        <div class="room-actions">
+          <a class="btn btn-primary" href="login.html">Ver detalles (requiere login)</a>
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const filters = readFilters();
+  if (!filters){ window.location.href = 'index.html'; return; }
+  const rooms = await fetchRooms(filters).catch(()=>[]);
+  render(rooms, filters);
 });
 
 

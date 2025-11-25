@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>RoomMatch — Mis alquileres</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/logueado.css" />
+  <link rel="stylesheet" href="css/verMisSolicitudes.css" />
+</head>
+<body>
+  <header class="header">
+    <img src="images/roomMatchlogo.png" alt="RoomMatch" class="logo" />
+    <h1 class="header-title">Mis alquileres</h1>
+    <a class="btn-logout" href="logueado.html">Volver</a>
+  </header>
+
+  <main class="rs-wrap">
+    <!-- Como inquilino -->
+    <section class="rs-card" aria-labelledby="alq-inq-title">
+      <h2 id="alq-inq-title" class="rs-title">Como inquilino</h2>
+      <p class="rs-subtitle">Alquileres en los que tú eres el inquilino.</p>
+      <div class="table-wrap">
+        <table class="rs-table">
+          <thead>
+            <tr>
+              <th>ID contrato</th>
+              <th>Hab.</th>
+              <th>Ciudad</th>
+              <th>Precio</th>
+              <th>Inicio</th>
+              <th>Fin</th>
+              <th class="rs-actions-col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-inquilino"></tbody>
+        </table>
+      </div>
+      <div class="empty" id="empty-inquilino" hidden>No tienes alquileres como inquilino.</div>
+    </section>
+
+    <!-- Como propietario -->
+    <section class="rs-card" aria-labelledby="alq-prop-title">
+      <h2 id="alq-prop-title" class="rs-title">De mis pisos (propietario)</h2>
+      <p class="rs-subtitle">Alquileres activos de habitaciones que te pertenecen.</p>
+      <div class="table-wrap">
+        <table class="rs-table">
+          <thead>
+            <tr>
+              <th>ID contrato</th>
+              <th>Hab.</th>
+              <th>Ciudad</th>
+              <th>Precio</th>
+              <th>Inquilino</th>
+              <th>Inicio</th>
+              <th>Fin</th>
+              <th class="rs-actions-col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-propietario"></tbody>
+        </table>
+      </div>
+      <div class="empty" id="empty-propietario" hidden>No tienes alquileres en tus pisos.</div>
+
+      <div class="rs-footer-actions">
+        <button type="button" class="btn btn-ghost" id="btn-refresh">Actualizar</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><p>© RoomMatch</p></footer>
+
+  <script src="js/db.js"></script>
+  <script src="js/verMisAlquileres.js" defer></script>
+</body>
+</html>

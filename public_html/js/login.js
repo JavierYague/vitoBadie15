@@ -54,9 +54,10 @@ async function _loginUser(ev) {
 
         sessionStorage.setItem('loggedInUser', JSON.stringify({
           email: user.email,
-          nombre: user.nombre
+          nombre: user.nombre,
+          foto: user.foto || 'images/avatar-default.png'
         }));}
-    window.location.href = 'logeado.html'; // o donde corresponda
+    window.location.href = 'logueado.html'; // o donde corresponda
   } catch (e) {
     console.error(e);
     alert('La base de datos no está disponible. Intenta de nuevo más tarde.');

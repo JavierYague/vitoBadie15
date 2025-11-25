@@ -3,13 +3,77 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
 -->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>RoomMatch — Registro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Reutiliza tu base y añade estilos propios -->
+  <link rel="stylesheet" href="css/logueado.css" />
+  <link rel="stylesheet" href="css/registro.css" />
+  <!-- Importante: db primero -->
+  <script src="js/db.js" defer></script>
+  <script src="js/registro.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <img src="images/roomMatchlogo.png" alt="RoomMatch" class="logo" />
+    <h1 class="header-title">Crear cuenta</h1>
+    <a href="login.html" class="btn-logout">Ir a login</a>
+  </header>
+
+  <main class="reg-wrap">
+    <form id="reg-form" autocomplete="on" novalidate>
+      <h2 class="reg-title">Regístrate en RoomMatch</h2>
+
+      <div class="reg-grid">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" type="text" class="input-field" required placeholder="Tu nombre" />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" class="input-field" required placeholder="tú@correo.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input id="password" name="password" type="password" class="input-field" minlength="4" required />
+        </div>
+
+        <div class="form-group">
+          <label for="password2">Repite contraseña</label>
+          <input id="password2" name="password2" type="password" class="input-field" minlength="4" required />
+        </div>
+
+        <div class="form-group">
+          <label for="foto">Foto (opcional)</label>
+          <input id="foto" name="foto" type="file" accept="image/*" />
+          <div class="avatar-preview">
+            <img id="preview" alt="Vista previa" />
+          </div>
+        </div>
+
+        <div class="form-group terms">
+          <label>
+            <input type="checkbox" id="acepto" required />
+            Acepto los términos y la política de privacidad.
+          </label>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-primary">Crear cuenta</button>
+      <p class="muted">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+
+      <div id="reg-msg" class="reg-msg" role="status" aria-live="polite"></div>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <p>© RoomMatch</p>
+  </footer>
+</body>
 </html>
+

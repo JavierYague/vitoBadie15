@@ -68,6 +68,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
   gap:8px;
   padding:12px;
 }
+.blurred { filter: blur(10px) brightness(.9); }
 
 /* Reutiliza botones base de logueado.css si existen; por si acaso: */
 .btn{
